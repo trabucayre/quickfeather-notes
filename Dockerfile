@@ -1,14 +1,13 @@
-FROM debian:buster
+FROM debian:bullseye
 MAINTAINER Gwenhael Goavec-Merou <gwenhael.goavec@trabucayre.com>
 
 ARG uid=500
 
 RUN apt-get update \
 	&& apt-get dist-upgrade -y \
-	&& apt-get -y install zlib1g-dev virtualenv make gcc git curl \
-		ncurses-bin ncurses-base wget g++ cpio unzip bc clang \
-		libncurses-dev rsync fasm \
-		tcl-dev libreadline-dev pkg-config bison flex libffi-dev \
+	&& apt-get -y install build-essential git \
+		python3-pip wget clang fasm tcl-dev \
+		libreadline-dev pkg-config bison flex libffi-dev \
 		cmake libxcursor-dev libxdamage-dev \
 		libxcomposite-dev libxinerama-dev libxext-dev \
 		libxrandr-dev libxi-dev libiconv-hook-dev \
