@@ -1,19 +1,25 @@
-export INSTALL_DIR=/opt/quicklogic
+export INSTALL_DIR=${INSTALL_DIR:-/opt/quicklogic/toolchain}
 BIN_DIR=$INSTALL_DIR/bin
 export YOSYS=$BIN_DIR/yosys
 export GENFASM=$BIN_DIR
-export PATH=$BIN_DIR:$PATH
+export PATH=$BIN_DIR:$HOME/.local/bin:$PATH
 
 NPROC=$(nproc)
 
-SKIP_VPR=0
-SKIP_YOSYS=0
-SKIP_PLUGINS=0
-SKIP_SYMBIFLOW=0
+SKIP_VPR=${SKIP_VPR:-0}
+SKIP_YOSYS=${SKIP_YOSYS:-0}
+SKIP_PLUGINS=${SKIP_PLUGINS:-0}
+SKIP_SYMBIFLOW=${SKIP_SYMBIFLOW:-0}
+
+# prepare build directory
+[ -e build ] || mkdir build
+
+pushd build
 
 pip3 install --user git+https://github.com/symbiflow/fasm
 pip3 install --user git+https://github.com/antmicro/quicklogic-fasm
 pip3 install --user git+https://github.com/antmicro/quicklogic-fasm-utils
+
 if [ ! $SKIP_YOSYS == 1 ]; then
 	#Checkout *yosys* repository (https://github.com/QuickLogic-Corp/yosys.git), branch: **quicklogic-rebased**. 
 	[ -e quicklogic-yosys ] || git clone https://github.com/QuickLogic-Corp/yosys.git -b quicklogic-rebased quicklogic-yosys
@@ -57,31 +63,27 @@ if [ ! $SKIP_SYMBIFLOW == 1 ]; then
 		#sed -i -- 's,-m pip install,-m pip --user install,g' common/cmake/env.cmake
 		cd -
 	fi
-#	#export YOSYS='path to Yosys binary, installed in first step'
+
 	cd symbiflow-arch-defs
 	echo "$DIR: make env"
 	make -j$NPROC PREFIX=$INSTALL_DIR env > ../build-$DIR.log 2>&1
 	cd build
 	echo "$DIR: make all_conda"
 	make -j$NPROC all_conda > ../../build-$DIR-conda.log 2>&1
+	# build and install quicklogic
 	cd quicklogic
-#	## marche pas
-#	#echo "$DIR: make techmap"
-#	#make -j8 file_build_quicklogic_techmap_cells_sim.v > ../../../build-$DIR-techmap.log 2>&1
-#	echo "$DIR: make install"
-#	make -j8 PREFIX=$INSTALL_DIR install > ../../../build-$DIR-install.log 2>&1
-	#cd build/quicklogic
-	make file_build_quicklogic_pp3_techmap_cells_sim.v
-	cd pp3
-	make quickfeather
 	make install PREFIX=$INSTALL_DIR
-	#make PREFIX=$INSTALL_DIR DEVICE_INSTALL_file_build_env_conda_bin_qlfasm
-	# not sure maybe useless
-	cd ../../vpr
+	cd ../vpr
 	make install PREFIX=$INSTALL_DIR
 	cd ../../../
+
+	# fix wrong env path
+	sed -i "s,$(pwd)/$DIR/build/env/conda/bin/python3,/usr/bin/env python3,g" \
+		$BIN_DIR/python/qlfasm
 fi
 
 #Run any test case in the current terminal window. For example, follow these steps to run a test case:
 # cd pp3/tests/quicklogic_testsuite/bin2seven
 # make bin2seven-ql-chandalar_fasm
+
+popd
