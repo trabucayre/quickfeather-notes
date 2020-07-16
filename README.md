@@ -57,7 +57,7 @@ sudo apt install wget libxcursor-dev libxcursor-dev libxdamage-dev \
         libxrandr-dev libxi-dev
 ```
 
-### Building toolchain
+## Building toolchain
 
 This repository provide a script (**run.sh**) to build the FPGA toolchain
 
@@ -106,7 +106,7 @@ docker# exit
 host$
 ```
 
-### FPGA toolchain use
+## FPGA toolchain use
 
 To be able to use the FPGA toolchain **PATH** must be updated:
 ```bash
