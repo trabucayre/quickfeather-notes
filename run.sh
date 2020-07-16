@@ -16,10 +16,6 @@ SKIP_SYMBIFLOW=${SKIP_SYMBIFLOW:-0}
 
 pushd build
 
-pip3 install --user git+https://github.com/symbiflow/fasm
-pip3 install --user git+https://github.com/antmicro/quicklogic-fasm
-pip3 install --user git+https://github.com/antmicro/quicklogic-fasm-utils
-
 if [ ! $SKIP_YOSYS == 1 ]; then
 	#Checkout *yosys* repository (https://github.com/QuickLogic-Corp/yosys.git), branch: **quicklogic-rebased**. 
 	[ -e quicklogic-yosys ] || git clone https://github.com/QuickLogic-Corp/yosys.git -b quicklogic-rebased quicklogic-yosys
@@ -58,7 +54,8 @@ if [ ! $SKIP_SYMBIFLOW == 1 ]; then
 		#git clone https://github.com/QuickLogic-Corp/symbiflow-arch-defs.git -b quicklogic-upstream-rebase
 		git clone https://github.com/QuickLogic-Corp/symbiflow-arch-defs.git
 		cd $DIR
-		git checkout 9a390d0d8c88c5034656c472fdfa58cccb419a2d
+		git checkout ee84fa3840e8149ff3b6b30410272e224d1dd7a8
+		# git checkout 02873668400bfadb88bac312fd3304b8b3876162 not working
 		sed -i -- 's,\$(CMAKE_COMMAND) \${CMAKE_FLAGS} ..,\$(CMAKE_COMMAND) -DCMAKE_INSTALL_PREFIX=\$(PREFIX) \${CMAKE_FLAGS} ..,g' Makefile
 		#sed -i -- 's,-m pip install,-m pip --user install,g' common/cmake/env.cmake
 		cd -
