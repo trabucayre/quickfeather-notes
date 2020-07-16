@@ -1,4 +1,4 @@
-export INSTALL_DIR=${INSTALL_DIR:-/opt/quicklogic/toolchain}
+export INSTALL_DIR=${INSTALL_DIR:-$(pwd)/quicklogic}
 BIN_DIR=$INSTALL_DIR/bin
 export YOSYS=$BIN_DIR/yosys
 export GENFASM=$BIN_DIR
