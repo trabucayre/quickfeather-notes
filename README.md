@@ -1,6 +1,7 @@
 # quickfeather-notes
 Notes, scripts and apps for the [Quickfeather Development Kit](https://www.quicklogic.com/products/eos-s3/quickfeather-development-kit/)
 
+For details about FPGA flow (synthesis, pnr and header) see [this](FPGAFlow.md)
 
 ## Prerequisites
 
