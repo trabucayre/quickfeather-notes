@@ -30,10 +30,13 @@ if [ ! $SKIP_VPR == 1 ]; then
 	[ -e vtr-verilog-to-routing ] || git clone https://github.com/QuickLogic-Corp/vtr-verilog-to-routing.git -b blackbox_timing
 #hash 8980e46218542888fac879961b13aa7b0fba8432
 	mkdir vtr-verilog-to-routing/build
-	cd vtr-verilog-to-routing/build
+	pushd vtr-verilog-to-routing/build
 	cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR ../
+	cd vpr
 	make -j$NPROC && make -j$NPROC install
-	cd -
+	cd ../utils
+	make -j$NPROC && make -j$NPROC install
+	popd
 fi
 
 if [ ! $SKIP_PLUGINS == 1 ]; then
@@ -56,23 +59,20 @@ if [ ! $SKIP_SYMBIFLOW == 1 ]; then
 		cd $DIR
 		git checkout ee84fa3840e8149ff3b6b30410272e224d1dd7a8
 		# git checkout 02873668400bfadb88bac312fd3304b8b3876162 not working
-		sed -i -- 's,\$(CMAKE_COMMAND) \${CMAKE_FLAGS} ..,\$(CMAKE_COMMAND) -DCMAKE_INSTALL_PREFIX=\$(PREFIX) \${CMAKE_FLAGS} ..,g' Makefile
+		#sed -i -- 's,\$(CMAKE_COMMAND) \${CMAKE_FLAGS} ..,\$(CMAKE_COMMAND) -DCMAKE_INSTALL_PREFIX=\$(PREFIX) \${CMAKE_FLAGS} ..,g' Makefile
 		#sed -i -- 's,-m pip install,-m pip --user install,g' common/cmake/env.cmake
 		cd -
 	fi
 
-	cd symbiflow-arch-defs
+	pushd symbiflow-arch-defs
 	echo "$DIR: make env"
-	make -j$NPROC PREFIX=$INSTALL_DIR env > ../build-$DIR.log 2>&1
+	make -j$NPROC CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=$INSTALL_DIR" env > ../build-$DIR.log 2>&1
 	cd build
 	echo "$DIR: make all_conda"
 	make -j$NPROC all_conda > ../../build-$DIR-conda.log 2>&1
 	# build and install quicklogic
-	cd quicklogic
-	make install PREFIX=$INSTALL_DIR
-	cd ../vpr
-	make install PREFIX=$INSTALL_DIR
-	cd ../../../
+	make install
+	popd
 
 	# fix wrong env path
 	sed -i "s,$(pwd)/$DIR/build/env/conda/bin/python3,/usr/bin/env python3,g" \
