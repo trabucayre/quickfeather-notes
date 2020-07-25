@@ -57,8 +57,8 @@ if [ ! $SKIP_SYMBIFLOW == 1 ]; then
 		#git clone https://github.com/QuickLogic-Corp/symbiflow-arch-defs.git -b quicklogic-upstream-rebase
 		git clone https://github.com/QuickLogic-Corp/symbiflow-arch-defs.git
 		cd $DIR
-		git checkout ee84fa3840e8149ff3b6b30410272e224d1dd7a8
-		# git checkout 02873668400bfadb88bac312fd3304b8b3876162 not working
+		#git checkout ee84fa3840e8149ff3b6b30410272e224d1dd7a8
+		git checkout 4e0abaa2064e69e18ae170ccb7e03370c569e396
 		#sed -i -- 's,\$(CMAKE_COMMAND) \${CMAKE_FLAGS} ..,\$(CMAKE_COMMAND) -DCMAKE_INSTALL_PREFIX=\$(PREFIX) \${CMAKE_FLAGS} ..,g' Makefile
 		#sed -i -- 's,-m pip install,-m pip --user install,g' common/cmake/env.cmake
 		cd -
