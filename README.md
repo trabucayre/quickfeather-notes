@@ -1,6 +1,9 @@
 # quickfeather-notes
 Notes, scripts and apps for the [Quickfeather Development Kit](https://www.quicklogic.com/products/eos-s3/quickfeather-development-kit/)
 
+For details on how to build the toolchain (*run.sh* internal behavior) see
+[Tim 'mithro' Ansell notes](https://docs.google.com/document/d/1kPf6cIGRtvCxJHdimlbgvyMmzVkCHH-XPnbz48h2jAg/edit)
+
 For details about FPGA flow (synthesis, pnr and header) see [this](FPGAFlow.md)
 
 ## Prerequisites
