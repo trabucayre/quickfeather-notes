@@ -1,0 +1,20 @@
+# -*- mode: Makefile -*-
+
+all: POWER UTILS FPGA
+
+.PHONY: POWER
+POWER:
+	make -f makefiles/Makefile_Power
+
+.PHONY: UTILS
+UTILS:
+	make -f makefiles/Makefile_Utils
+
+.PHONY: FPGA
+FPGA:
+	make -f makefiles/Makefile_FPGA
+
+clean:
+	make -f makefiles/Makefile_Power clean
+	make -f makefiles/Makefile_Utils clean
+	make -f makefiles/Makefile_FPGA clean
