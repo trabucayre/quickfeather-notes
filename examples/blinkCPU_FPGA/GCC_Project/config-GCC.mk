@@ -47,7 +47,7 @@ export INCLUDE_DIRS=-I"$(PROJ_DIR)" \
                  -I"$(PROJ_ROOT)/Libraries/Power/inc" \
                  -I"$(PROJ_ROOT)/Libraries/FPGA/inc" \
                  -I"$(PROJ_ROOT)/Libraries/Utils/inc" \
-                 -I"$(PROJ_ROOT)/BSP/quickfeather/inc" \
+                 -I"$(PROJ_ROOT)/BSP/$(BOARD)/inc" \
                  -I"$(PROJ_ROOT)/Libraries/Utils/inc" \
                  -I"$(PROJ_ROOT)/Libraries/DatablockManager/inc"
     
@@ -61,7 +61,7 @@ export CFLAGS= $(MACROS) \
 
 export LD_FLAGS_1= -mcpu=cortex-m4 -mthumb -mlittle-endian -mfloat-abi=hard -mfpu=fpv4-sp-d16 \
             ${DASH_O} $(OPT_FLAGS) -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  \
-            ${DASH_G} -T "$(PROJ_DIR)/quickfeather.ld" -Xlinker --gc-sections -Wall -Werror \
+            ${DASH_G} -T "$(PROJ_DIR)/$(BOARD).ld" -Xlinker --gc-sections -Wall -Werror \
 	-Wl,--fatal-warnings -Wl,-Map,"$(OUTPUT_PATH)/$(OUTPUT_FILE).map" \
             --specs=nano.specs --specs=nosys.specs -Wl,--no-wchar-size-warning \
             -o "$(OUTPUT_PATH)/$(OUTPUT_FILE).elf" -lm\
@@ -76,7 +76,7 @@ export ELF2BIN_OPTIONS=-O binary
 #
 export COMMON_STUB =$(PROJ_DIR)$(DIR_SEP)makefiles$(DIR_SEP)Makefile_common
 
-export BSP_DIR        = $(PROJ_ROOT)$(DIR_SEP)BSP$(DIR_SEP)quickfeather$(DIR_SEP)src
+export BSP_DIR        = $(PROJ_ROOT)$(DIR_SEP)BSP$(DIR_SEP)$(BOARD)$(DIR_SEP)src
 export HAL_DIR        = $(PROJ_ROOT)$(DIR_SEP)HAL$(DIR_SEP)src
 export FREERTOS_DIR   = $(PROJ_ROOT)$(DIR_SEP)FreeRTOS
 export LIB_DIR        = $(PROJ_ROOT)$(DIR_SEP)Libraries

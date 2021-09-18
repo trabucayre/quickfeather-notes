@@ -13,7 +13,7 @@ $ export PROJ_ROOT=/somewhere/qorc-sdk
 ```
 
 Additionaly, examples are compatibles with *quickfeather* and *Qomu*. To select which board to use (currently only
-*blinkCPU* is *Qomu* compatible) a second environment variable must be defined by
+*blinkCPU* and *blinkCPU_FPGA* are *Qomu* compatible) a second environment variable must be defined by
 
 ```bash
 $ export BOARD=quickfeather
