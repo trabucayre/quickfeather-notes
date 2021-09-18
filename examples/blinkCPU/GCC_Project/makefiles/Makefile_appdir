@@ -3,9 +3,11 @@
 #
 MAIN_SRCS:=$(wildcard $(MAIN_DIR)/*.c)
 
-filters=audio_pipeline_example.c h2d_protocol.c ql_hostTask.c ql_smart_remote_app.c
+#filters=audio_pipeline_example.c h2d_protocol.c ql_hostTask.c ql_smart_remote_app.c
+filters=pincfg_table_quickfeather.c pincfg_table_qomu.c
 
 SRCS:=$(filter-out $(filters),$(notdir $(MAIN_SRCS)))
+SRCS += pincfg_table_$(BOARD).c
 
 OBJS:=$(addprefix $(OUTPUT_PATH)/,$(SRCS:.c=.o))
 SRC_PATH:= $(MAIN_DIR)

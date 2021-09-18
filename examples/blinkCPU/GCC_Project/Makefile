@@ -55,6 +55,7 @@ clean_FreeRTOS:
 CLEAN_TARGET += FreeRTOS
 
 .PHONY:BSP
+# same Makefile for both (same content)
 BSP:
 	make -f makefiles/Makefile_quickfeather_BSP
 clean_BSP:
@@ -69,6 +70,10 @@ clean_Libraries:
 	make -f makefiles/Makefile_Libraries clean
 
 CLEAN_TARGET += Libraries
+
+flash:
+	python3 $(PROJ_ROOT)/TinyFPGA-Programmer-Application/tinyfpga-programmer-gui.py \
+		--port /dev/ttyACM0 --reset --mode m4 --m4app output/$(OUTPUT_FILE).bin
 
 load_swd:
 	openocd -f ../../../sipeed_swd.cfg -f board/quicklogic_quickfeather.cfg \

@@ -13,6 +13,13 @@ all: $(OBJS) # $(MAIN_FPGA_RTL_DIR)/$(FPGA_RTL_OBJ)
 #$(info QLFS OBJS: ${OBJS})
 #$(info SRC_PATH: ${SRC_PATH})
 
+ifeq ($(BOARD), quickfeather)
+CFLAGS += -Dquickfeather=1
+else
+ifeq ($(BOARD), qomu)
+CFLAGS += -Dqomu=1
+endif
+endif
 
 %.o:%.c
 $(OUTPUT_PATH)/%.o: $(SRC_PATH)/%.c $(DEPEND_PATH)/%.d
