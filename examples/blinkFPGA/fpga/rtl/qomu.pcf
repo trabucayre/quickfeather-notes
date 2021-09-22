@@ -1,0 +1,2 @@
+// Note: Qomu uses the WLCSP package so the format is: set <signal name> <WLCSP pin #>
+set_io blueled		F4

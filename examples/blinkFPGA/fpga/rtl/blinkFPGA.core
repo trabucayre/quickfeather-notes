@@ -1,0 +1,38 @@
+CAPI=2:
+name : blinkFPGA
+
+filesets:
+  quickfeather: {files: [quickfeather.pcf : {file_type : PCF}]}
+
+  qomu: {files: [qomu.pcf : {file_type : PCF}]}
+
+  rtl: {files: [blinkFPGA.v : {file_type : verilogSource}]}
+
+targets:
+  default: &default
+    filesets : [rtl]
+    toplevel: ["is_toplevel? (blinkFPGA)"]
+
+  quickfeather:
+    default_tool : symbiflow
+    description : QuickFeather Development Kit
+    filesets : [rtl, quickfeather]
+    tools:
+      symbiflow:
+        part    : ql-eos-s3
+        package : PU64
+        vendor  : quicklogic
+        pnr     : vtr
+    toplevel : blinkFPGA
+
+  qomu:
+    default_tool : symbiflow
+    description : Qomu Development Kit
+    filesets : [rtl, qomu]
+    tools:
+      symbiflow:
+        part    : ql-eos-s3
+        package : WR42
+        vendor  : quicklogic
+        pnr     : vtr
+    toplevel : blinkFPGA
