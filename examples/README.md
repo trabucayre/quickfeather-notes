@@ -27,3 +27,6 @@ $ export BOARD=qomu
 - *blinkCPU_FPGA*: both MCU and eFPGA are used (no communication) MCU blink the red led, FPGA the blue one
 - *pwmCPU_FPGACLI*: a PWM is instanciated in the eFPGA. `period`, `duty`, `polarity`
   and `enable` are configured by MCU using `CLI` interface.
+- *blinkFPGA*: eFPGA is used to blink blue led. MCU is only used to configure
+  pinmux and clk freq. gateware is written in `appfpga` flash area and firmware
+  in `m4app`
