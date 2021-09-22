@@ -76,10 +76,5 @@ flash_fpga:$(APPFPGA)
 	python3 $(PROJ_ROOT)/TinyFPGA-Programmer-Application/tinyfpga-programmer-gui.py \
 		--port /dev/ttyACM0 --reset --mode fpga --appfpga $(APPFPGA)
 
-
-test:
-	@echo $(bin_out)
-	@echo $(elf_out)
-
 clean:
-	@rm $(OBJS) output/*.d $(elf_out) $(bin_out) $(map_out) $(sym_out)
+	@rm $(OBJS) output/*.d $(elf_out) $(bin_out) $(map_out) $(sym_out) build

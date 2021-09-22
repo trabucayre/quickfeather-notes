@@ -29,4 +29,4 @@ $ export BOARD=qomu
   and `enable` are configured by MCU using `CLI` interface.
 - *blinkFPGA*: eFPGA is used to blink blue led. MCU is only used to configure
   pinmux and clk freq. gateware is written in `appfpga` flash area and firmware
-  in `m4app`
+  in `m4app` (see [README](blinkFPGA/README.md) for more details)
