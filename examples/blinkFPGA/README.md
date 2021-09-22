@@ -12,6 +12,8 @@ activate` to install `fusesoc` by:
 $ pip3 install -U fusesoc
 ```
 
+`INSTALL_DIR` must be set to root quicklogic's symbiflow/conda root directory 
+
 in `GCC_Project` directory: commands are
 - `make` will build both bitstream and firmware
 - `make gateware` will build only the bitstream
