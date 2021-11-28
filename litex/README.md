@@ -37,3 +37,5 @@ $ make flash_gateware # only flash FPGA area
 ## Examples
 
 - *01-basic*: example mixing QuickLogic's CLI and LiteX's gateware: toggle or configure manually LEDs
+- *02-IRQ*: same example. Adds FPGA -> MCU IRQ: displays a message when user
+  button is pushed.
