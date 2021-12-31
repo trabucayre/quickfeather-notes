@@ -1,3 +1,5 @@
+#!/bin/bash
+
 export INSTALL_DIR=${INSTALL_DIR:-$(pwd)/quicklogic}
 BIN_DIR=$INSTALL_DIR/bin
 export YOSYS=$BIN_DIR/yosys
