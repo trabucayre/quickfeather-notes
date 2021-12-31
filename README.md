@@ -91,12 +91,12 @@ where:
 
 Two script are provided:
 
-1. **prepare_docker** to build the image with all mandatories dependencies
+1. **prepare_image** to build the image with all mandatories dependencies
 2. **launch_docker** to create a container in interactive mode
 
 Prepare image:
 ```bash
-host$ ./prepare_docker
+host$ prepare_image
 ```
 
 Enter docker image:
