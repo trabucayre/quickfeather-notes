@@ -36,7 +36,7 @@ export PATH=$PATH:/somewhere/gcc-arm-none-eabi-9-2020-q2-update/bin
 ### FPGA toolchain
 
 ```bash
-sudo apt install build-essentials git cmake bison flex python3-pip \
+sudo apt install build-essential git cmake bison flex python3-pip \
 	tcl-dev ca-certificates libffi-dev libreadline-dev \
 	gawk iverilog pkg-config clang curl graphviz xdot
 ```
