@@ -15,7 +15,7 @@ Since examples are build out of *qorc-sdk* tree, you need to export the `SDK` pa
 $ export QORC_SDK=/somewhere/qorc-sdk
 ```
 
-Additionaly, for futur works, board type must be provided (currently only **quickfeather**):
+Additionaly, for future works, board type must be provided (currently only **quickfeather**):
 
 ```bash
 $ export BOARD=quickfeather
@@ -31,7 +31,7 @@ It's possible to flash independently the **FPGA** or the **MCU**:
 
 ```bash
 $ make flash_software # only flash MCU area 
-$ make flash_gateware # only flash FPGA area
+$ make flash_fpga # only flash FPGA area
 ```
 
 ## Examples
