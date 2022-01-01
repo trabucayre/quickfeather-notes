@@ -4,7 +4,7 @@
 
 You need to have all required tools: see [here](https://github.com/QuickLogic-Corp/qorc-sdk/blob/master/quickstart.rst#setup-development-environment)
 
-You also needs to have an up-to-date [LiteX installation] (https://github.com/enjoy-digital/litex/wiki/Installation)
+You also needs to have an up-to-date [LiteX installation](https://github.com/enjoy-digital/litex/wiki/Installation)
 
 ## Env setup
 
