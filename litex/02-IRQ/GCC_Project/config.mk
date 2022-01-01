@@ -178,7 +178,7 @@ endif
 
 $(info PROJ_NAME = ${PROJ_NAME})
 
-#Ouput binary name
+#Output binary name
 export OUTPUT_FILE=${PROJ_NAME}
 
 #Libraries to include
