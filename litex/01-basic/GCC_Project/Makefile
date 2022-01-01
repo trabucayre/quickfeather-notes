@@ -62,8 +62,11 @@ $(bin_out): $(elf_out)
 $(elf_out): $(OBJS) $(QORC_LIB)
 	@echo Linking ...
 	$(LD) $^ $(LD_FLAGS_1) $(LIBS) $(LD_FLAGS_2)
+	
+$(OUTPUT_PATH):
+	mkdir -p $@
 
-output/%.o:%.c
+output/%.o: %.c $(OUTPUT_PATH)
 	@echo Compile: $<
 	$(CC) $(CFLAGS) -c $< -o $@
 
