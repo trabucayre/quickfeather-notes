@@ -1,3 +1,5 @@
+#!/bin/bash
+
 export INSTALL_DIR=${INSTALL_DIR:-$(pwd)/quicklogic}
 BIN_DIR=$INSTALL_DIR/bin
 export YOSYS=$BIN_DIR/yosys
@@ -27,10 +29,10 @@ if [ ! $SKIP_YOSYS == 1 ]; then
 fi
 
 if [ ! $SKIP_VPR == 1 ]; then
-	[ -e vtr-verilog-to-routing ] || git clone https://github.com/QuickLogic-Corp/vtr-verilog-to-routing.git -b blackbox_timing
-#hash 8980e46218542888fac879961b13aa7b0fba8432
+	[ -e vtr-verilog-to-routing ] || git clone https://github.com/SymbiFlow/vtr-verilog-to-routing.git
 	mkdir vtr-verilog-to-routing/build
 	pushd vtr-verilog-to-routing/build
+	git checkout 8980e46218542888fac879961b13aa7b0fba8432
 	cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR ../
 	cd vpr
 	make -j$NPROC && make -j$NPROC install

@@ -4,7 +4,7 @@
 
 You need to have all required tools: see [here](https://github.com/QuickLogic-Corp/qorc-sdk/blob/master/quickstart.rst#setup-development-environment)
 
-You also needs to have an up-to-date [LiteX installation] (https://github.com/enjoy-digital/litex/wiki/Installation)
+You also needs to have an up-to-date [LiteX installation](https://github.com/enjoy-digital/litex/wiki/Installation)
 
 ## Env setup
 
@@ -15,7 +15,7 @@ Since examples are build out of *qorc-sdk* tree, you need to export the `SDK` pa
 $ export QORC_SDK=/somewhere/qorc-sdk
 ```
 
-Additionaly, for futur works, board type must be provided (currently only **quickfeather**):
+Additionaly, for future works, board type must be provided (currently only **quickfeather**):
 
 ```bash
 $ export BOARD=quickfeather
@@ -31,7 +31,7 @@ It's possible to flash independently the **FPGA** or the **MCU**:
 
 ```bash
 $ make flash_software # only flash MCU area 
-$ make flash_gateware # only flash FPGA area
+$ make flash_fpga # only flash FPGA area
 ```
 
 ## Examples

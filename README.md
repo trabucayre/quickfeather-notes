@@ -36,7 +36,7 @@ export PATH=$PATH:/somewhere/gcc-arm-none-eabi-9-2020-q2-update/bin
 ### FPGA toolchain
 
 ```bash
-sudo apt install build-essentials git cmake bison flex python3-pip \
+sudo apt install build-essential git cmake bison flex python3-pip \
 	tcl-dev ca-certificates libffi-dev libreadline-dev \
 	gawk iverilog pkg-config clang curl graphviz xdot
 ```
@@ -91,12 +91,12 @@ where:
 
 Two script are provided:
 
-1. **prepare_docker** to build the image with all mandatories dependencies
+1. **prepare_image** to build the image with all mandatories dependencies
 2. **launch_docker** to create a container in interactive mode
 
 Prepare image:
 ```bash
-host$ ./prepare_docker
+host$ prepare_image
 ```
 
 Enter docker image:
